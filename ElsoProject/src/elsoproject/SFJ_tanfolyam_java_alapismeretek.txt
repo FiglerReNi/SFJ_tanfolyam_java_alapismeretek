@@ -1,0 +1,50 @@
+SFJ_tanfolyam_java_alapismeretek
+
+1.video
+Java alkalmazhatóság:
+ - asztali alkalmazás minden operációs rendszerre (platform independent)
+ - web szerver létrehozás
+ - rest api
+ - komplett web rendszer pl.: Amazon
+Jellemzõk:
+ - általános célú OOP nyelv
+ - elég egyszer megírni a kódot és utána bárhol futtatható -> JVM 
+JVM: Minden operációs rendszerhez van átalakító, ami az egyszer megírt kódunkat alakítja megfelelõ
+     formára. Ehhez az op rendszernek megfelelõ java verziót kell letölteni (ez tartalmazza a JVM-et), ennek segítségével 
+     futtathatóak a java alkalmazások. A java alkalmazások esetében a .jar a futtatható állomány. -> ezt futtatja a JVM ->      A JVM-et futtatja az operációs rendszer.
+
+2.video
+ - Ha írok egy kódot és elmentem .java formátumban, akkor abból a java fordítója (javac -> java compiler) tud csinálni byte kódot, tehát ebben az esetben nem machine      kódra fordul a megírt kódunk. Viszont ezt a byte kódot érti JVM és fordítja tovább machine kódra, és így jut el a processzorhoz.
+ - Van lehetõség egybõl machine kódra is fordítani, de így akkor nem lesz hordozható a kód a különbözõ platformok között.
+ JRE: JVM + segédkönyvtárak
+ JDK: JRE + fejlesztõi eszközök
+
+3.video
+  JAVA SE - alap változat -> asztali alkalmazásokhoz elég
+  JAVA EE - szerverek készítéséhez jó
+  JAVA FX - grafikus környezet 
+
+4.video
+  8 féle primitív adattípus létezik javaban:(kisbetûvel írandóak)
+	- byte: -128 és 127; alapértéke:0;  memória foglalás: 1byte; egész számok
+	- sort: -32768 és 32767; alapértéke:0; memória foglalás: 2byte; egész számok
+	- int: -2milliárd és 2milliárd; alapértéke:0; memória foglalás: 4byte; egész számok
+	- long: nagy számok tárolására, amik az intbe nem férnek; alapértéke:0; memória foglalás: 8byte; egész számok
+	- float: + és - lebegõpontos; alapértéke:0,0f; memória foglalás: 4byte; törtek is
+	- double: + és - lebegõpontos; alapértéke:0,0d; memória foglalás: 8byte; törtek is
+	- char: 1karakter; alapértéke:'\u0000'; memória foglalás: 2byte; a karakter kódját tárolja el
+	- boolean: true/false; alapértéke:false; 
+  Objektumok (nagy kezdõbetûvel írandóak): Nagyon sok van belõlük, és sok minden meg van írva hozzájuk elõre pl. a hosszuk stb. Alapértéke: null.
+	- String
+	- Array
+
+6.video
+  Procedurális vs Objektumoriontált
+	class -> osztály (tervrajz)
+	objektum -> az osztályból készült példány, bármennyi lehet belõle
+  	A javaban a fõ osztály az Object.
+  
+
+
+
+
