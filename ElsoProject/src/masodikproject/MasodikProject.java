@@ -35,6 +35,18 @@ public class MasodikProject {
         //boolean empty = (secondName == null);
         //System.out.println(empty == true ? "Nincs név" : "Van név: " + secondName);      
         System.out.println(secondName == null ? "Nincs név" : "Van név: " + secondName);
+        String thing = "alma";
+        thing.charAt(0); //a
+        thing.charAt(2); //m
+        thing.length(); //4
         
+        Cat macska = new Cat();
+        Cat macska2 = new Cat();
+        macska.getName();
+        macska.getWeight();
+        macska.nyavog();
+        System.out.println(macska.equals(macska2)); //false ---> két objektum sosem azonos
+        
+       
     }
 }

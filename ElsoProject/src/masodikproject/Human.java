@@ -23,10 +23,8 @@ public class Human {
     public void setAge(int age) {
         this.age = age;
     }
-    
-    
-    
-    
+    //A lenti felépítésűkomment bekerül a javadoc-ba
+    /** Ez a metódus kiírja az ember nevét */ 
     void writeMyName(){
         //lokális változó lesz, vagyis itt bent ezt fogja hasznélni és kiírni
         String name = "Jani";
