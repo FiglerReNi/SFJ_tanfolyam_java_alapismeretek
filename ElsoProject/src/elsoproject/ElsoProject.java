@@ -8,7 +8,7 @@ public class ElsoProject {
     public static void main(String[] args) {
         //Csak az fut le ami a main-ben van, azon kívül csak az fut le amit meghívunk.
         //ctrl + space -> elkezdek írni valamit és lehetőségeet ajánl.
-        //Csak ez működik: "" a másik '' nem
+        //Csak ez működik: "" a másik '' nem String esetében, char esetében pedig csak ez: ''
         //Console-ra ír dolgokat -> ha lefuttatjuk cmd-ben ott is látjuk
         //7.video
         //  System.out.println("Szia! " + 2 + 2);
