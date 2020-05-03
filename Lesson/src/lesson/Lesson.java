@@ -30,8 +30,7 @@ public class Lesson {
         ArrayList: nem statikus a mérete, sorba lehet egyszerűen redezni, sok beépített függvény
                     primitivet nem tud tárolni, tehát ha int-et aarunk Integer-t kell megadni
                     nem lehet multidimenziós
-        Sok esetben az array a gyorsabb, de nem mindig, feladattól függ
-        
+        Sok esetben az array a gyorsabb, de nem mindig, feladattól függ       
         */
         
     }
