@@ -1,5 +1,7 @@
 package masodikproject;
 
+import java.util.ArrayList;
+
 public class MasodikProject {
 
     public static void main(String[] args) {
@@ -135,7 +137,88 @@ public class MasodikProject {
        
         Integer it = 2;
         String something = it.toString(); //----> stringé tudom alakítani
- 
+        
+        /*ArrayList-ek
+            A tipusnak a szülőt is megadhatom, pl. Animal és bele tehetem a Cat-et a listába
+            de ebben az esetben állati formában tárolja a macskát, nem macskaként, vagyis a macska
+            osztályban lévő specifikus dolgok nem lesznek elérhetőek rá, csak ami benne van az állatban
+            casztolással tudjuk macskává alakítani
+        */
+        //ArrayList<Cat> cats = new ArrayList<Cat>();
+        ArrayList<Animal> cats = new ArrayList<Animal>(); // ez is helyes mert bár utána egy cat-et raok bele, de ez a szülője
+        Cat macskaTeszt = new Cat("Cirmi");
+        cats.add(macskaTeszt);
+        if(!cats.isEmpty()){
+            System.out.println(cats.get(0).getName());  //cats.get(0) ---> arrayList esetén így hivatkozunk az elemére
+        }
+        Cat allatbolMacska =(Cat) cats.get(0); //visszaalaítás állatból macskává
+        allatbolMacska.nyavog();
+        
+        ArrayList<Object> list1 = new ArrayList<Object>(); //ősosztályban is tárolhatunk, ilyenor bármit bele tudok tenni, ami objektum
+        Dog morzsa = new Dog();
+        list1.add(macskaTeszt);
+        list1.add(morzsa); //ezt nem fogom tudni pl macskává kasztolni, csak a saját osztályába vissza
+        Cat visszaMacska = (Cat) list1.get(0); //kasztolás az eredeti osztályba
+        
+        /* Object class jellemzők:
+        hashCode = JVM által generált kód, ami az objektum egyedi azonosító száma, minden objektumnak ez más
+        amior két objekzumot hasonlítunk össze akkor a hash kódjukat hasonlítjuk gyakorlatilag össze
+        getClass = package + osztályt adja vissza az objektumnak, minden objektum tudja magáról, melyik
+        osztályból lett létrehozva.
+        equals --> összehasonlítás
+        toString()
+        */        
+        Object o1 = new Object();
+        Object o2 = new Object();
+        Object o3 = o1;
+        o1.equals(o3);
+        System.out.println( o1.hashCode() + " " + o2.hashCode() + " " + o3.hashCode());  //1 és 3 megeggyezik
+        System.out.println(macskaTeszt.getClass());
+        if(list1.get(1) instanceof Cat )  //példánya e az adott osztálynak valami
+        {
+           Cat ujMorzsa = (Cat)list1.get(1); 
+           ujMorzsa.nyavog();
+        }
+        //Cat ujMorzsa = (Cat )list1.get(1); --> ez hibás mert valójában kutya iosztályból van a list1-ben ez az elem
+        Integer a1 = 2;
+        String a2 = a1.toString(); //-->stringgé alakít
+        
+        System.out.println(macskaTeszt.toString()); //objektum kiiratásnál így nem sokat segít, de osztályon belül a
+                                                    //toString - et felül tudjuk írni magunknak
+        System.out.println(macskaTeszt); //így is a toStringet adja vissza
+        
+        /*
+        Immutable(megváltoztathatatlan):  A String a heap-nek egy külön részén él (speciális ezért), és emiatt
+            immutable lesz. Ilyen osztályt mi is létre tudunk hozni
+        Static --> Egy osztály methodját meg lehet hívni példányosítás nékül is pl Math.random-ot így használjuk
+        Ha egy osztálynak van static methodja az példányosítás nélkül meghívható, ezt akkor lehet ha az a method 
+        mindig ugyanazt csinálja        
+        */
+        String szoveg1 = "Hello";
+        String szoveg2 = szoveg1;
+        szoveg2 = "Szia";       
+        System.out.println(szoveg1 + " " + szoveg2);
+        //korábbiak alapján a kettőne meg kellene egyeznie, hiszen a 2-es az egyesre fog mutatni,
+        //azonban mivel a String speciális, az 1-es marad az eredeti, és csak a kettes változik
+        String s1 = "Hello";
+        String s2 = new String("Hello");
+        //különbség: a második esetben sima, hagyományos objetumot hozok létre, normál helyen lesz a heap-ben
+        //első esetben pegig speciális Stringet hozok létre, ami immutable és más helyen él a heap-ben (String Constant Pool-ban)
+        Hazel hazel = new Hazel(5); //nincs setter, final a változó és a class így ne állítható át ---> immutable class lesz
+        Math.random();
+        //static methodhoz nem kell példányosítás
+        Hazel.ul();
+        
+        //az Animal-ban lévő static változón osztozni fognak
+        Cat c1 = new Cat();
+        Cat c2 = new Cat();
+        Cat c3 = new Cat();
+        Cat c4 = new Cat();
+        
+        /*UML diagramm, folyamatábra --> program ábrázolása
+        has it: rendelkezik vele pl a Cat a Collar-al, nem szülője, nem alosztálya, hanem egy változója az osztály
+        Is it: Cat egy alfaja az Animalnak
+        */
     }
     public static void test(Character a) {
         System.out.println(a);

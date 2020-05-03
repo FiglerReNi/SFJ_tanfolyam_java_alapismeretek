@@ -6,7 +6,8 @@ package masodikproject;
 //a benne lévő összes methodot kötelező override-al meghatározni
 //public class Cat extends Feline{
 public class Cat extends Animal implements Pet{
-    
+    public static int objectCount;
+    public Collar nyakorv = new Collar();
     //constructor --> ha ide nem írok semmit is létrehoz magának egyet
     //automatikusan lefut a példányosításkor
     //több constructort is létre lehet hozni, ha létrehozok olyat amiben várok értéket akkor az első
@@ -69,5 +70,10 @@ public class Cat extends Animal implements Pet{
     @Override
     public void halas() {
        
+    }
+    
+    @Override
+    public String toString(){
+        return "Én egy macska vagyok a nevem pedig: " + this.getName();
     }
 }

@@ -5,7 +5,9 @@ public abstract class Animal {
     
     private String name;
     private int weight;
-    
+   
+    //public bárhol elérhető
+    //protected csak adott packagen belül érhető el
     //ha ezt private-ra állítom, akkor nem elérhető máshol, változóra is igaz
     //ha protectedre állítom akkor elérhető lesz az alosztályok számára is
     protected void shout(){
