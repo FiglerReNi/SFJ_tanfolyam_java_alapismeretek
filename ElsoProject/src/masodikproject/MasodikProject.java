@@ -2,9 +2,56 @@ package masodikproject;
 
 import java.util.ArrayList;
 
+interface Message{
+    String great();
+}
+
+class My_class{
+    public void displayMessage(Message m){
+        System.out.println(m.great() 
+         + "This is an example of anonymous inner class as an argument");
+    }
+}
+
+
+//inner class-t lehet csinálni, és egy oldalon több class is lehet
+class Outer_Demo {
+
+    private int num = 2;
+
+    private class Inner_Demo {
+        private int num2 = 5;         
+        public void print() {          
+            //belső osztályon belül elérem a private-ot
+            System.out.println("Ez egy belső osztály" + num);
+        }
+    }
+
+    //ez azért kell mert private class-t hoztunk létre, és az outer-en kívül más nem éri el, a display_Innert-t
+    //viszont igen
+    void display_Inner() {
+        Inner_Demo inner = new Inner_Demo();
+        inner.print();
+    }
+}
+
 public class MasodikProject {
 
     public static void main(String[] args) {
+        //azért kell az override, mert csak így tudjuk az interface-t meghívni, itt most nem implementáljuk egy osztálynál
+        //hanem példányosítjuk és így csináljuk (anonym osztály lesz mert nem adok nevet neki)
+        My_class objMy = new My_class();
+        objMy.displayMessage(new Message(){
+                  @Override
+                  public String great(){
+                      return "Hello";
+                  };       
+        });
+        
+        objMy.displayMessage(() -> "Hello"); //ez ugyanazt csinálja mint a felső rész --> példányosít+override
+        
+        Outer_Demo outer = new Outer_Demo();
+        outer.display_Inner();
 //       String name = "Gyula";
 //       System.out.println(name);
         Human first = new Human();

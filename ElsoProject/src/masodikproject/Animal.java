@@ -1,6 +1,7 @@
 package masodikproject;
 //többszörös öröklődés nincs a javaban, egyetlen szülője lehet egy osztálynak
 //abstract --> ezt az osztályt önmagában nem lehet példányosítani
+//ha az abstract osztálynakk van egy abstract metódusa, akor azt kötelező override-olni, mint az implementációnál
 public abstract class Animal {
     
     private String name;
