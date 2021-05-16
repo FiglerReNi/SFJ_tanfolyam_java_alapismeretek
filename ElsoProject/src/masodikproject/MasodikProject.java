@@ -95,74 +95,53 @@ public class MasodikProject {
         macska.getName();
         macska.getWeight();
         macska.nyavog();
-        System.out.println(macska.equals(macska2)); //false ---> két objektum sosem azonos
+        System.out.println(macska.equals(macska2)); 
         macska.shout();
-//        Animal allat = new Animal(); // -->ha abstract nem példányosítható
-//        allat.shout();
+       Animal allat = new Animal(); //
+        allat.shout();
        macska.oleles();
        System.out.println(macska.getName());
        System.out.println(macska2.getName());
        System.out.println(macska3.getName());
        System.out.println(macska3.getWeight());
        
-       System.out.print("teszt\n"); //manuális sortörés
-       System.out.print("teszt"); //utána nem jön új sor, folytatólagosan követi a következő dolog
-       System.out.println("teszt");  //utána új sor jön
+       System.out.print("teszt\n"); 
+       System.out.print("teszt"); 
+       System.out.println("teszt"); 
        
        int a = 22;
-       //byte b = a;  nem működik, mert különböző adattípusok
+       byte b = a;  
        
-       byte c = 22; //fordítva működik mert kisebbet töltünk nagyobba
+       byte c = 22; 
        int d = c;
-       
-       //Változó:
-       //-ékezetes karakter ne
-       //-számmal nem kezdődhet
-       //-elsoValtozo, ElsoValtozo: mindekettő helyes, mert bár kisbetűvel szoktu kezdeni, de nem kötelező
        
        char elso = 'a';
        int masodik = 2;
-       //String harmadik = elso --> a char-t nem tölthetjük át stringbe csak így
-       String harmadik ="" + elso;// ---> így megoldható
-       //harmadik = masodik; //stringbe nem tölthetünk intet
-       harmadik = "" + masodik; // --> így megoldható
+       String harmadik = elso 
+       String harmadik ="" + elso;
+       harmadik = masodik; 
+       harmadik = "" + masodik; 
        
        double e = 3.5;
-       //int f = e; //---> ezt így nem lehet, mert int nem tud double-t
+       int f = e; 
        
-       //Kasztolás 
-       String szoveg = "a";  //a string objektum, vagyis vele együtt létre jön az object a java ősosztálya is
-                             //így lesznek beépített elérhető metódusai, függvényei
-       //a primitívekre nem tudok semmi ilyet meghívni, mert nem objektumok.
-       int szam = 2; // nem csak a korábbi megoldssal csinálhatunk belőle stringet
+       String szoveg = "a";  
+       int szam = 2; 
        
-       //a .valueOf() egy overloaded function (túltöltött), mert ugyanaz a nevük, de különböző fajta paramétereket várnak
-       szoveg = String.valueOf(szam); // -->igy be tudjuk tenni a stringbe az intet, de innentől szövegként tárolódik
        
-       //Minden primitivnek létezik egy becsomagoló osztálya:
-       /*   primitivek            objektumok
-            boolean                 Boolean
-            char                    Character
-            byte                    Byte
-            short                   Short
-            int                     Integer
-            long                    Long
-            float                   Float
-            double                  Double
-       */
-       
-       char teszt1 = 'c'; //ez így primitív nem tudok dolgoat meghívni rá
-       Character teszt2 = 'c'; //így viszont már objektum, meghívhatók rá dolgok, de több helyet foglal így
-                               //viszont így könnyebb bonyolultabb dolgokat csinálni velük
+       szoveg = String.valueOf(szam); 
+         
+       char teszt1 = 'c'; 
+       Character teszt2 = 'c'; 
+        
        teszt2.toString();
        
-       test(teszt1); //bár objetumot vár, meg tudom hívni a primitív párjával is ezeket, és a java automatikusan becsomagolja
-                     //és lesz belőle objektum
-       Integer pelda = 2; //fordítva is működik
+       test(teszt1); 
+       Integer pelda = 2; 
        test1(pelda);
        
        int x = 5;
-       int y = x; //Primitíveknél a program lemásolja x értékét, utána ők különböző életet élnek
+       int y = x; 
        
        x++; // x=6 y még mindig 5
         System.out.println("" + x + " " + y);
@@ -171,19 +150,16 @@ public class MasodikProject {
         Cat macskaTest2 = macskaTest1;       
         macskaTest2.setName("Fifi");     
         System.out.println(macskaTest1.getName() + " " + macskaTest2.getName());
-        // mindkettő Fifi lesz, mert objetumoknál csak referenciák vannak, olyan változók ami csk rámutat,
-        //új objektum minig csak new-al jön létre ---> ha egyiken módosítok, mási is módosít
-       
-       /*Manuális kasztolás*/
+        
        int szamX = 2;
        Integer szamY = szamX;
        
-       double szamZ = 3.5;  //ezt szeretném int-be átvinni
-       int szamV = (int)szamZ; //de ebben az esetben leveszi a tizedes utáni összes számot és nem kerekít
+       double szamZ = 3.5;  
+       int szamV = (int)szamZ; 
         System.out.println(szamV);
        
         Integer it = 2;
-        String something = it.toString(); //----> stringé tudom alakítani
+        String something = it.toString(); 
         
         /*ArrayList-ek
             A tipusnak a szülőt is megadhatom, pl. Animal és bele tehetem a Cat-et a listába
@@ -237,9 +213,7 @@ public class MasodikProject {
         /*
         Immutable(megváltoztathatatlan):  A String a heap-nek egy külön részén él (speciális ezért), és emiatt
             immutable lesz. Ilyen osztályt mi is létre tudunk hozni
-        Static --> Egy osztály methodját meg lehet hívni példányosítás nékül is pl Math.random-ot így használjuk
-        Ha egy osztálynak van static methodja az példányosítás nélkül meghívható, ezt akkor lehet ha az a method 
-        mindig ugyanazt csinálja        
+       
         */
         String szoveg1 = "Hello";
         String szoveg2 = szoveg1;
@@ -262,10 +236,6 @@ public class MasodikProject {
         Cat c3 = new Cat();
         Cat c4 = new Cat();
         
-        /*UML diagramm, folyamatábra --> program ábrázolása
-        has it: rendelkezik vele pl a Cat a Collar-al, nem szülője, nem alosztálya, hanem egy változója az osztály
-        Is it: Cat egy alfaja az Animalnak
-        */
     }
     public static void test(Character a) {
         System.out.println(a);
