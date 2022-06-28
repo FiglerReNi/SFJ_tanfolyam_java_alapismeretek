@@ -1,0 +1,175 @@
+https://www.binaryhexconverter.com/decimal-to-binary-converter
+https://codingbat.com/java
+
+Netbeans:
+  Telpítés:
+  	Netbeans – Java EE - (JDK és Tomcat van benne, illetve a java compiler is ezeket telepíti a gépre automatikusan)
+  	Gyorsbillentyűk:
+  		Ctrl+Space -> egy parancsot ha elkezdünk leírni kiegészíti
+  		Ctrl+Shift+C -> komment
+  		Find Usage: jobb klikk -> References -> Project
+  	Új projekrt:
+  		Java-> Java Application
+  Netbeans sima Java alalmazás jar file készítése:
+  	• Projekten jobb egér -> Clean and Build -> lefut egy Ant parancs, a Netbaens ezt használja csomagolóként.
+  	• Ezután megkeressük a létrejött dist fájl-t a projekt mappájában, amiben benne lesz a jar file
+  	• Ezt konzolon egy java -jar alkalmazas.jar paranccsal tudjuk futtatni.
+
+Java alkalmazhatóság:
+ - asztali alkalmazás minden operációs rendszerre (platform independent)
+ - web szerver létrehozás
+ - rest api
+ - komplett web rendszer pl.: Amazon
+
+Jellemzők:
+ - általános célú OOP nyelv, oracle gondozza
+ - elég egyszer megírni a kódot és utána bárhol futtatható bármilyen operációs rendszeren -> JVM segítségével
+
+Program ábrázolása:
+	• UML diagram
+	• Folyamatábra
+  • Pseudo kód
+
+Fogalmak
+  	→  JRE: JVM + segédkönyvtárak
+  	→  JDK: JRE + fejlesztői eszközök
+  	→  JAVA SE - alap változat -> asztali alkalmazásokhoz elég
+  	→  JAVA EE - szerverek készítéséhez jó, céges környezethez kell
+  	→  JAVA FX - grafikus környezet
+  	→ Javadoc:  mit csinál az adott függvény/metódus. MInt egy komment. /** valami */ ---> ebben a formában a metódus előtt, bekerül a szöveg a javadoc-ba, ami automatikusan generálódik
+  	→ FIFO először bekerülő adat jön ki először
+  	→ LIFO a legutolsó adat jön ki legelőször
+  	→ Reurzív függvény: Olyan függvény ami saját magát hívja meg, például egy feltételhez kötötten.
+
+Kód felépítése, fordítása, futása:
+  Szerkezet:
+  	• A különböző kódrészleteket package-ben tároljuk, különböző osztályokat teszünk alá, amik logikailag összetartoznak. Tehát packageken belül hozzuk létre az osztályokat. Mindig nagy betűvel kezdődnek. Ha egy packageben egy másik package osztályát szeretnénk használni, be kell importálnunk.
+  	• Mindig a main fut le először, amikor elindítunk egy programot, ez a belépési pont. Csak az fut le ami a main-ben van.
+  	• A main tud String array-t fogadni kívülről, cmd-ben tudunk parmétert átadni, pl hogy hogyan inudjon el. A main-en belül egy ifben pl megvizsgáljuk a bejövő paramétert és az alapján indítjuk el valahogyan a programot. Fontos hogy az is vizsgáljuk nem üres-e. Mert ha csak ifet csinálunk, de nem kapunk paramétert hibát fog dobni
+  	• A main-en kívül ugyanabban a classban ha csinálunk egy metódust akkor csak akor tudjuk meghívni a main-ben ha az is static.
+    Másik módszer, hogy nem static a metódus, a main-ben példányosítjuk az osztályt amiben a main is van, és így már meg tudjuk hívni a nem static metódusunkat.
+  Futtatás:
+  	• Ha írok egy kódot és elmentem .java formátumban, akkor abból a java fordítója (javac -> java compiler) tud csinálni byte kódot, tehát ebben az esetben nem machine kódra fordul a megírt kódunk. Ha módosítjuk a kódot mielőtt futtatnánk újra kell fordítani.
+  	• Ezt a byte kódot érti JVM (Java Virtual Machine) és fordítja tovább machine kódra, és így jut el a processzorhoz.
+  	• Ehhez az op rendszernek megfelelő java verziót kell letölteni (ez tartalmazza a JVM-et), minden operációs rendszerhez van átalakító, ami az egyszer megírt java kódunkat alakítja megfelelő formára.
+  	• A java alkalmazások esetében a .jar a futtatható állomány. -> ezt futtatja a JVM -> a JVM-et futtatja az operációs rendszer.
+  	• Van lehetőség egyből machine kódra is fordítani, de így akkor nem lesz hordozható a kód a különböző platformok között.
+  Két fontos memória terület van javaban:
+  	• Heap: Nagyobb méretű memória terület, az objektumok mindig itt élnek, a referenciájuk viszont a stackben él. Itt élnek a classon belüli primitívek is, mert az objektum részei. Speciális területe a String Constant Pool, ahol a stringek élnek, ha nem new-al hozzuk létre őket, hanem csak simán.
+  	• Stack: Kisebb méretű terület a memóriában. Amikor java program elindul minden fontos vezető a stacbe kerül, itt élnek a változók és az objektumok referenciái is.
+  		A stack LIFO szerint működik (lineáris):
+  			  Egy példa szerint:
+  				1. stack aljára bekerül a main hogy meghívódott
+  				2. a primitivek a stackben élnek tehát a következő egy int i = 2 ami a tetejére kerül, ha ez a következő sorunk a kódban
+  				3. rápakolódik mondjuk egy objektum referenciája (hivatkozása) -> obj, de maga az objektum a heap-ben lesz
+  				4. ezután jön egy függvényhívás például, ami paramétert vár egy Object típusú objektumot, tehát a referenciája lesz itt, de a heap-ben a már létrehozott obj Objectre mutat, hiszen ezt adjuk át
+  				5. ezután belekerülnek a meghívott függyvényen belüli dolgok pl egy String ami a heapben él, de a referenciája a stack-be kerül.
+  				6. Ha lefutott a fuggveny, akkor ami hozzá tartozott a stackben:fv hívás, param, String ---> ezeket kivesszük
+  				7. visszalépünk a meghívás helyére majd fut tovább a kód a következő sorral
+  CMD parancsok:
+  	Javac --> byte kódra fordítja a .java kiterjesztésű kódot és létrehoz egy .class nevű file-t
+  	Java -cp --> futtatja a lefordítptt kódot, vagyis a .class-t, kiterjesztés nélkül az osztály nevét kell megadni java –cp  . Teszt, vagy ha package-ben van akkor a package nevét is java –cp . Elsoprojekt/Teszt
+  		. --> adott mappára utal
+  		.. --> eggyel feljebbi mappát jelenti
+  		cp --> classPath rövidítése
+
+Adattípusok:
+  	• 8 féle primitív adattípus létezik javaban:(kisbetűvel írandóak)
+  		- byte: -128 és 127; alapértéke:0;  memória foglalás: 1byte; egész számok
+  		- sort: -32768 és 32767; alapértéke:0; memória foglalás: 2byte; egész számok
+  		- int: -2milliárd és 2milliárd; alapértéke:0; memória foglalás: 4byte; egész számok
+  		- long: nagy számok tárolására, amik az intbe nem férnek; alapértéke:0; memória foglalás: 8byte; egész számok
+  		- float: + és - lebegőpontos; alapértéke:0,0f; memória foglalás: 4byte; törtek is
+  		- double: + és - lebegőpontos; alapértéke:0,0d; memória foglalás: 8byte; törtek is
+  		- char: 1karakter; alapértéke:'\u0000'; memória foglalás: 2byte; a karakter kódját tárolja el
+  		- boolean: true/false; alapértéke:false;
+  	•   Objektumok (nagy kezdőbetűvel írandóak): Nagyon sok van belőlük, és sok minden meg van írva hozzájuk előre pl. a hosszuk stb. Alapértéke: null.
+  		hashCode = JVM által generált kód, ami az objektum egyedi azonosító száma, minden objektumnak ez más. Amior két objekTumot hasonlítunk össze akkor a hash kódjukat hasonlítjuk gyakorlatilag össze.
+  		getClass = package + osztályt adja vissza az objektumnak, minden objektum tudja magáról, melyik osztályból lett létrehozva.
+  		- String
+  			▪ Kétféleképpen hozható létre
+  				○ String x = 'teszt';
+  				○ Strin x = new String('teszt')
+  			▪ Első esetbne egy speciális helyen él a heap-ben (String Constant Pool) és ezért maga az objektum is speciális
+  				○ Immutable lesz
+  				○ Ha két string objektumot egyelővé teszünk és változtatunk a másodikon, az első nem fog változni (mintha primitiv lenne)
+  			▪ Második esetben hagyományos objektumként viselkedik és normál helyen jön létre a heap-ben
+  		- Array
+  		 -Osztály példányai (objektumok), mindig new-al jön létre
+  A string objektum, vagyis vele együtt létre jön az object a java ősosztálya is így lesznek beépített elérhető metódusai, függvényei
+  A primitívekre nem tudok semmi ilyet meghívni, mert nem objektumok.
+  Ha létrehozok két objektumot és az elsőt egyenlővé teszem a másodikkal, akkor innentől kezdve mind a kettő a másodikra fog mutatni. Ez azt is jelenti hogy az elsőre már semmi nem fog mutatni, nem lesz elérhető.
+
+Kasztolás:
+  Kasztolás:
+  	adattípusok közötti váltás
+  		○ int byte -> akor működik gond nélkül ha kisebbet töltjük a nagyobba, fordítva nem
+  		○ double-t nem rakhatunk int-be, csak manuális kasztolással, de az levágja a tizedeseket
+  		○ char-t csak simán nem tölthetjük stringbe, össze kell kapcsolnunk egy üres "" jellel, ugyanígy az int-et is
+  		○ int->string valueOf() fv-el
+  		○ ArrayList típuskezelés:
+  			▪ A tipusnak a szülőt is megadhatom, pl. Animal és bele tehetem a Cat-et a listába de ebben az esetben állati formában tárolja a macskát, nem macskaként, vagyis a macska osztályban lévő specifikus dolgok nem lesznek elérhetőek rá, csak ami benne van az állatban.  Kasztolással visszaalakítható macska objektummá. De mindig csak a saját osztályába alakíthatóak vissza, harmadik fajtába nem.
+  			▪ Típusnak az ősosztály is megadható, ilyenkor bármilyen objektumot bele lehet tenni
+  		○ Integer.parseInt() -> stringből integer
+  Primitivből objektum:
+  	• Minden primitivnek létezik egy becsomagoló osztálya
+  	• Így objektumok lesznek, meghívhatók rá dolgok, de több helyet foglal, viszont így könnyebb bonyolultabb dolgokat csinálni velük.
+  	• Egy metódust ami objektumot vár ezeből, meg tudok hívni a primitív párjával is és a java automatikusan becsomagolja nekünk. És fordítva is működik
+  	           primitivek            objektumok
+  	            boolean               Boolean
+  	            char                  Character
+  	            byte                   Byte
+  	            short                  Short
+  	            int                    Integer
+  	            long                   Long
+  	            float                  Float
+  	            double                 Double
+
+
+Parancsok:
+  	• System out print - consolra ír (cmd-ben is látni)
+  	• System out println - consolra ír sortöréssel (cmd-ben is látni)
+  	• " " - Srting esetében csak ez használható
+  	• ' ' - char esetében csak ez használható
+  	• ValueOf() - overloaded function (túltöltött), mert ugyanaz a nevük, de különböző fajta paramétereket várnak. Be tudjuk tenni vele a stringbe az intet, de innentől szövegként tárolódik
+  	• toString() - stringé alakít, ha egy objektumot csak a nevével íratunk ki, akkor valójában ezt a függvényt hívjuk meg rajta. A toStringet felül tudjuk írni, hogy azt adja vissza amit mi szeretnénk.
+  	• (int) - maunális kasztolás
+  	• hashCode() - objektum azonosító száma
+  	• getClass() - tartalmazó package + class visszaadása
+  	• equals - összehasonlítás
+  	• Instance of - példánya-e az adozz osztálynak valami
+  	• Math.random:
+  		○ 0 és 1 között ad vissza törtet alapesetben
+  		○ ha kasztolunk (int) alapból mindig nullát kapunk
+  		○ ezért szorozni kell még --> 0-4 között kapunk ha 5-el szorzunk pl
+  	• == java-ban csak két egyenlőség jel van
+
+Példa projekt cmd:
+  Alap beállítások:
+  	• Környezeti változók --> Windows-> start menü -> környezeti változók
+  		itt a Path-hoz hozzá kell adni a jdk-t: C:\Program Files\Java\jdk1.8.0_144\bin
+  	• innentől cmd-ben tudjuk használni
+  	• Project mappájában:java parancs
+  	• --dir adott könyvtár tartalma
+  Project:
+   IDE-n kívül írunk kódot és futtatjuk:
+  	•         Desktopon új mappa: Teszt;
+  	•         Notepad-ben a kód
+  	•         Teszt.java néven mentjük
+  	•         Byte kódra fordítjuk: javac Teszt.java -> enter (ha vmi nem jó hibát ír)
+  	•         Létrejött a Teszt.class fájl, ez a byte kód ezt a JVM már tudja futtatni, lefordult a kód
+  	•         Tudjuk futtatni: java Teszt  (kiterjesztés nélkül az osztály nevét kell megadni)
+   A main tud String array-t fogadni, cmd-ben tudunk parmétert átadni, pl hogy hogyan inudjon el
+          java Teszt alma --> ugyanúgy lefut
+          java Teszt alma korte --> ugyanúgy lefut
+  Kód:
+  public class Teszt{
+              public static void main(String[] args){
+  		System.out.println("OK");
+  		if(args[0].equals("alma"){
+  			System.out.println("Almánk van");
+  			}
+  		}
+  	}
+
+
